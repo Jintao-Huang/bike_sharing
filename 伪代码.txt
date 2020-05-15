@@ -1,0 +1,41 @@
+调度算法(伪代码)
+-------------------------------------------------
+Input: state: 当前各地区单车累积增减量, dispatch_thresh: 调度阀值(大于等于调度阀值的点才允许被调度),
+    trans_thresh: 运输阀值(一次调度至少运送多少量单车), max_trans: 最大运输(一次调度至多运送多少量单车),
+    distance_thresh: 距离阀值(调度距离必须小于等于距离阀值)
+
+定义调度信息记录的列表 -> logs
+根据state，查找出该时刻所有 `state[pos] >= dispatch_thresh` (满足调度条件)的点 -> pos_arr
+对pos_arr根据 `abs(state[pos])` (各点累积增减量偏离程度) 倒序排序 -> pos_arr
+for start_pos in pos_arr:
+    if (`state[start_pos] >= dispatch_thresh` (满足调度条件)):
+        # 以下内容对单异常点进行调度, 算法上类似于广搜
+        定义优先级队列(与start_pos距离越近越优先) -> pri_queue
+        定义记录state中各点是否被访问过的数组 -> is_visited
+        将start_pos压入pri_queue
+        while (pri_queue队列非空):
+            抛出pri_queue优先级最高的点 -> curr_pos
+            if (curr_pos 不是 start_pos) and (state[curr_pos]满足运输条件(trans_thresh))
+                根据max_trans, 与state[curr_pos]计算运输量 -> tran_num
+                根据tran_num调整state[curr_pos], state[start_pos]的数量
+                将调度信息写入logs
+                if (start_pos 满足调度结束要求):
+                    break
+            for pos in curr_pos上下左右四个点:
+                if pos 越界:
+                    continue
+                if pos 已被访问过(is_visited):
+                    continue
+                else:
+                    修改is_visited, 该点已访问
+                计算pos距离start_pos的距离 -> start_dist
+                if `start_dist > distance_thresh` (距离超过距离阀值):
+                    continue
+                将start_dist, pos 压入pri_queue
+Output: logs
+
+
+
+
+
+
