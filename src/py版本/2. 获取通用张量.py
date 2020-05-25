@@ -16,7 +16,8 @@
 # -----------------------------------------------------------------------
 import pandas as pd
 import numpy as np
-data = pd.read_pickle("节选.pkl")
+
+data = pd.read_pickle("files/节选.pkl")
 
 # 1. 获取通用张量start_out, end_in. shape(371, 488, 366)
 latitude_start_arr = data["latitude_start"].to_numpy()
@@ -26,8 +27,8 @@ longitude_end_arr = data["longitude_end"].to_numpy()
 starttime_arr = data["starttime"].to_numpy()
 endtime_arr = data["endtime"].to_numpy()
 
-start_out = np.zeros((371, 488, 366), dtype=np.int16)  # (-)
-end_in = np.zeros((371, 488, 366), dtype=np.int16)  # (+)
+start_out = np.zeros((371, 488, 336), dtype=np.int16)  # (-)
+end_in = np.zeros((371, 488, 336), dtype=np.int16)  # (+)
 # -------------------- 常数设置:
 interval = 0.001373291015625
 latitude_0 = 39.66133117675781
@@ -59,5 +60,5 @@ print("\r>> %d / %d" % (len(latitude_start_arr), len(latitude_start_arr)))
 
 print("start_out: min: %d" % np.min(start_out))  # -54
 print("end_in: max: %d" % np.max(end_in))  # 81
-pd.to_pickle(start_out, "start_out.pkl")
-pd.to_pickle(end_in, "end_in.pkl")
+pd.to_pickle(start_out, "files/start_out.pkl")
+pd.to_pickle(end_in, "files/end_in.pkl")

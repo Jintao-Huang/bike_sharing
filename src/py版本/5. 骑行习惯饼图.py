@@ -17,7 +17,7 @@ plt.rcParams['axes.unicode_minus'] = False
 # 骑行习惯——饼图
 
 # 1. 获取数据
-data = pd.read_pickle("节选.pkl")
+data = pd.read_pickle("files/节选.pkl")
 
 latitude_start_arr = data["latitude_start"].to_numpy()
 longitude_start_arr = data["longitude_start"].to_numpy()
@@ -67,6 +67,6 @@ plt.pie(distrib, explode, labels, pctdistance=0.5, autopct="%.2f%%", labeldistan
 
 plt.axis('equal')
 plt.legend(loc='upper right')
-plt.savefig("distribute.png", dpi=200, bbox_inches='tight')
+plt.savefig("images/distribute.png", dpi=200, bbox_inches='tight')
 plt.show()
 plt.close()

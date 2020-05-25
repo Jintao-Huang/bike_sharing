@@ -5,5 +5,16 @@
 ## 使用
 运行结果放在 `images/` 文件夹下  
 
-如果要自己运行结果只需要依次运行源码( `src/` 文件夹下)从 1 - 6 即可
+如果要自己运行结果只需要依次运行源码( `src/py版本/` 文件夹下)从 1 - 6 即可
+
+
+## 注意  
+`ipynb版本`只是第一版本，已不给予维护  
+请使用`py版本`测试效果  
+
+
+数据集百度网盘链接(放置在`src/py版本/files/`文件夹下)  
+链接：[https://pan.baidu.com/s/1GGb4c4AB582BJWFAXVQkcA](https://pan.baidu.com/s/1GGb4c4AB582BJWFAXVQkcA)    
+提取码：ic5b  
+
 

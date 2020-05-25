@@ -41,7 +41,7 @@ import numpy as np
 from utils.geohash import decode_exactly
 
 # 1. 文件以starttime升序排序.
-data = pd.read_csv("mobike_train_data.csv", dtype={
+data = pd.read_csv("files/mobike_train_data.csv", dtype={
     "orderid": np.int32,
     "userid": np.int32,
     "bikeid": np.int32,
@@ -99,7 +99,7 @@ data['endtime'] = endtime
 # 4. 将全部的信息保存成pkl文件: "完整.pkl"
 print(data.dtypes)
 print("数据量: %d" % data.shape[0])
-pd.to_pickle(data, "完整.pkl")
+pd.to_pickle(data, "files/完整.pkl")
 # Out:
 # orderid                         int32
 # userid                          int32
@@ -117,9 +117,9 @@ pd.to_pickle(data, "完整.pkl")
 # 数据量: 3214096
 # ----------------------------------
 # 5. 只使用2017-05-10 ~ 2017-05-16的数据
-# data = pd.read_pickle("完整.pkl")
+# data = pd.read_pickle("files/完整.pkl")
 starttime = data['starttime'].to_numpy()
 idx_max = np.max(np.nonzero(starttime <= pd.Timestamp(year=2017, month=5, day=17).to_numpy())[0])
 data = data.iloc[:idx_max + 1, :]  # 由于是升序排序的
 # 6. 保存节选数据，保存为: "节选.pkl"
-pd.to_pickle(data, "节选.pkl")
+pd.to_pickle(data, "files/节选.pkl")

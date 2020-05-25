@@ -14,7 +14,7 @@ import pandas as pd
 # plt.rcParams['font.sans-serif'].insert(0, 'SimSun')
 # plt.rcParams['axes.unicode_minus'] = False
 
-start_out, end_in = pd.read_pickle("start_out.pkl"), pd.read_pickle("end_in.pkl")
+start_out, end_in = pd.read_pickle("files/start_out.pkl"), pd.read_pickle("files/end_in.pkl")
 # 纬度范围: [39.66, 40.17]. 精确范围: [39.66133117675781 40.17082214355469]
 # 经度范围: [116.06, 116.73]. 精确范围: [116.06025695800781 116.73042297363281]
 (top, bottom), (left, right) = (39.66133117675781, 40.17082214355469), (116.06025695800781, 116.73042297363281)
@@ -29,7 +29,7 @@ plt.yticks(np.arange(39.6, 40.2, 0.05), fontsize=11)  # range(0, 32)
 # 1.2 画图
 plt.imshow(z, origin="lower", vmin=0, vmax=500, extent=(left, right, bottom, top))
 plt.colorbar(shrink=0.9)
-plt.savefig("空间使用活度图.png", dpi=500, bbox_inches='tight')
+plt.savefig("images/空间使用活度图.png", dpi=500, bbox_inches='tight')
 plt.show()
 plt.close()
 
@@ -55,7 +55,7 @@ plt.grid()
 # 1.2 画图
 plt.imshow(z, origin="lower", vmin=0, vmax=500, extent=(left, right, bottom, top))
 plt.colorbar(shrink=0.9)
-plt.savefig("空间使用活度图_网格.png", dpi=500, bbox_inches='tight')
+plt.savefig("images/空间使用活度图_网格.png", dpi=500, bbox_inches='tight')
 plt.show()
 plt.close()
 

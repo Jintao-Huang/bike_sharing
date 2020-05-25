@@ -19,7 +19,7 @@ import pandas as pd
 plt.rcParams['font.sans-serif'].insert(0, 'SimSun')
 plt.rcParams['axes.unicode_minus'] = False
 
-start_out, end_in = pd.read_pickle("start_out.pkl"), pd.read_pickle("end_in.pkl")
+start_out, end_in = pd.read_pickle("files/start_out.pkl"), pd.read_pickle("files/end_in.pkl")
 # ----------------------------------------
 
 # 1. 绘制一周中每天每时刻的单车使用量图——折线图(-out)
@@ -53,7 +53,7 @@ for i in range(2):  # 原数据是"Wednesday"开始的，此处进行调整顺�
     handles.insert(0, handles.pop(-1))
 
 plt.legend(handles, labels)
-plt.savefig("-out.png", dpi=200, bbox_inches='tight')
+plt.savefig("images/-out.png", dpi=200, bbox_inches='tight')
 plt.show()
 plt.close()
 # ----------------------------------------
@@ -90,7 +90,7 @@ for i in range(2):  # 原数据是"Wednesday"开始的，此处进行调整顺�
     handles.insert(0, handles.pop(-1))
 
 plt.legend(handles, labels)
-plt.savefig("in+out.png", dpi=200, bbox_inches='tight')
+plt.savefig("images/in+out.png", dpi=200, bbox_inches='tight')
 plt.show()
 plt.close()
 
@@ -136,7 +136,7 @@ for i in range(2):  # 原数据是"Wednesday"开始的，此处进行调整顺�
     handles.insert(0, handles.pop(-1))
 
 plt.legend(handles, labels)
-plt.savefig("in+out累积值.png", dpi=200, bbox_inches='tight')
+plt.savefig("images/in+out累积值.png", dpi=200, bbox_inches='tight')
 plt.show()
 plt.close()
 
@@ -166,6 +166,6 @@ x = np.arange(0, 7)
 plt.bar(x, z, width=0.7, edgecolor="k", linewidth=0.5)
 for i, j in zip(x, z):  # 加上 上头的 数字
     plt.text(i, j + 6000, j, ha="center", va="bottom", fontsize=12)
-plt.savefig("周图-out.png", dpi=200, bbox_inches='tight')
+plt.savefig("images/周图-out.png", dpi=200, bbox_inches='tight')
 plt.show()
 plt.close()

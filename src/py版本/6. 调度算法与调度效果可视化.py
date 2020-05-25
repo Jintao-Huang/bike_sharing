@@ -21,8 +21,8 @@ distance_thresh = 9  # 9km
 delta_time = 2  # 2 * 30min = 1h
 
 # -------------------------------------- 预处理
-start, end = pd.read_pickle("start_out.pkl"), pd.read_pickle("end_in.pkl")
-temp = start + end  #
+start, end = pd.read_pickle("files/start_out.pkl"), pd.read_pickle("files/end_in.pkl")
+temp = start + end
 z = np.zeros((height, width, temp.shape[-1]), dtype=temp.dtype)
 for i in range(z.shape[0]):
     for j in range(z.shape[1]):
@@ -174,14 +174,14 @@ for i in range(z.shape[2]):
 
     x = z[..., i]
     d.update(x)
-    if i % delta_time == 0 and i != 0:
+    if i % delta_time == 0:
         # 绘制调度前后的区别
         if i == 16:
             print("---------------------- 8点调度前")
-            d.show(vlim=300, save_fname="8点调度前.png")
+            d.show(vlim=300, save_fname="images/8点调度前.png")
             d.dispatch(time="%02d:%02d" % (i // 2, i % 2 * 30))
             print("---------------------- 8点调度后")
-            d.show(vlim=300, save_fname="8点调度后.png")
+            d.show(vlim=300, save_fname="images/8点调度后.png")
         else:
             d.dispatch(time="%02d:%02d" % (i // 2, i % 2 * 30))
 
@@ -190,7 +190,7 @@ print("---------------------- 调度一周后")
 print("调度次数: %d" % d.dispatch_num)  # 调度次数: 567
 print("state_min: %d, state_max: %d" % (d.state.min(), d.state.max()))  # state_min: -190, state_max: 193
 
-d.show(vlim=1000, save_fname="调度一周后.png")
+d.show(vlim=1000, save_fname="images/调度一周后.png")
 # ---------------------
 d = Dispatch(height, width, dispatch_thresh, trans_thresh, max_trans, distance_thresh)
 for i in range(z.shape[2]):
@@ -199,4 +199,4 @@ for i in range(z.shape[2]):
 print("---------------------- 不调度一周后")
 print("调度次数: %d" % d.dispatch_num)  # 调度次数: 0
 print("state_min: %d, state_max: %d" % (d.state.min(), d.state.max()))  # state_min: -2988, state_max: 2694
-d.show(vlim=1000, save_fname="不调度一周后.png")
+d.show(vlim=1000, save_fname="images/不调度一周后.png")
