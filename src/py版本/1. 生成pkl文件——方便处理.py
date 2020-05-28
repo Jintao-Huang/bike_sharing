@@ -9,7 +9,7 @@
 #       longitude_start
 #       latitude_end
 #       longitude_end
-# 3. 添加endtime: 通过假定10km/s的骑行速度、starttime以及开始点与终止点的位置，计算endtime.
+# 3. 添加endtime: 通过假定10km/h的骑行速度、starttime以及开始点与终止点的位置，计算endtime.
 # 4. 将全部的信息保存成pkl文件: "完整.pkl"
 #   全部字段:
 #       1. orderid

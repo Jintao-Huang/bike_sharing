@@ -3,13 +3,13 @@
 # date: 2020-5-10
 #
 # 该文件功能:
-# 1. 绘制一周中每天每时刻的单车使用量图——折线图(-out)
+# 1. 绘制一周中每天每时刻的单车使用量图——折线图(out)
 
 # 2. 绘制一周中每天每时刻的剩余单车的增减量——折线图(in-out)
 
 # 3. 绘制一周中每天每时刻的剩余单车的剩余量累积值——折线图(实际意义: 其倒数为当前时刻骑行在外的单车数)
 
-# 4. 绘制一周中每天总单车使用量——条形图(-out)
+# 4. 绘制一周中每天总单车使用量——条形图(out)
 # -----------------------------------------------------------------------
 import matplotlib.pyplot as plt
 import numpy as np
@@ -53,7 +53,7 @@ for i in range(2):  # 原数据是"Wednesday"开始的，此处进行调整顺�
     handles.insert(0, handles.pop(-1))
 
 plt.legend(handles, labels)
-plt.savefig("images/-out.png", dpi=200, bbox_inches='tight')
+plt.savefig("images/out.png", dpi=200, bbox_inches='tight')
 plt.show()
 plt.close()
 # ----------------------------------------
@@ -90,7 +90,7 @@ for i in range(2):  # 原数据是"Wednesday"开始的，此处进行调整顺�
     handles.insert(0, handles.pop(-1))
 
 plt.legend(handles, labels)
-plt.savefig("images/in+out.png", dpi=200, bbox_inches='tight')
+plt.savefig("images/in-out.png", dpi=200, bbox_inches='tight')
 plt.show()
 plt.close()
 
@@ -136,7 +136,7 @@ for i in range(2):  # 原数据是"Wednesday"开始的，此处进行调整顺�
     handles.insert(0, handles.pop(-1))
 
 plt.legend(handles, labels)
-plt.savefig("images/in+out累积值.png", dpi=200, bbox_inches='tight')
+plt.savefig("images/in-out累积值.png", dpi=200, bbox_inches='tight')
 plt.show()
 plt.close()
 
@@ -166,6 +166,6 @@ x = np.arange(0, 7)
 plt.bar(x, z, width=0.7, edgecolor="k", linewidth=0.5)
 for i, j in zip(x, z):  # 加上 上头的 数字
     plt.text(i, j + 6000, j, ha="center", va="bottom", fontsize=12)
-plt.savefig("images/周图-out.png", dpi=200, bbox_inches='tight')
+plt.savefig("images/周图out.png", dpi=200, bbox_inches='tight')
 plt.show()
 plt.close()

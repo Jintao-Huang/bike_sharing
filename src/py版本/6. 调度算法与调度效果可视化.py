@@ -187,8 +187,8 @@ for i in range(z.shape[2]):
 
 # 不进行调度与调度的区别
 print("---------------------- 调度一周后")
-print("调度次数: %d" % d.dispatch_num)  # 调度次数: 567
-print("state_min: %d, state_max: %d" % (d.state.min(), d.state.max()))  # state_min: -190, state_max: 193
+print("调度次数: %d" % d.dispatch_num)  # 调度次数: 542
+print("state_min: %d, state_max: %d" % (d.state.min(), d.state.max()))  # state_min: -185, state_max: 177
 
 d.show(vlim=1000, save_fname="images/调度一周后.png")
 # ---------------------
@@ -198,5 +198,5 @@ for i in range(z.shape[2]):
     d.update(x)
 print("---------------------- 不调度一周后")
 print("调度次数: %d" % d.dispatch_num)  # 调度次数: 0
-print("state_min: %d, state_max: %d" % (d.state.min(), d.state.max()))  # state_min: -2988, state_max: 2694
+print("state_min: %d, state_max: %d" % (d.state.min(), d.state.max()))  # state_min: -2991, state_max: 2694
 d.show(vlim=1000, save_fname="images/不调度一周后.png")

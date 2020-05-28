@@ -9,8 +9,8 @@
 #       经度范围: [116.06, 116.73]. 精确范围: [116.06025695800781 116.73042297363281]
 #       时间范围: 2017-05-10 0:00:00 - 2017-05-17 0:00:00. 半小时切一份.
 #           使用floor(例如7:00代表7:00-7:30). 2 * 24 * 7 = 336
-#   start_out: shape(371, 488, 366). 某点含义: 当前时间段, 该区域单车使用量(-)
-#   end_in: shape(371, 488, 366). 某点含义: 当前时间段, 该区域单车归还量(+)
+#   start_out: shape(371, 488, 336). 某点含义: 当前时间段, 该区域单车使用量(-)
+#   end_in: shape(371, 488, 336). 某点含义: 当前时间段, 该区域单车归还量(+)
 
 
 # -----------------------------------------------------------------------
@@ -19,7 +19,7 @@ import numpy as np
 
 data = pd.read_pickle("files/节选.pkl")
 
-# 1. 获取通用张量start_out, end_in. shape(371, 488, 366)
+# 1. 获取通用张量start_out, end_in. shape(371, 488, 336)
 latitude_start_arr = data["latitude_start"].to_numpy()
 longitude_start_arr = data["longitude_start"].to_numpy()
 latitude_end_arr = data["latitude_end"].to_numpy()
