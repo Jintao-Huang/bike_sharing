@@ -22,7 +22,7 @@ plt.rcParams['axes.unicode_minus'] = False
 start_out, end_in = pd.read_pickle("files/start_out.pkl"), pd.read_pickle("files/end_in.pkl")
 # ----------------------------------------
 
-# 1. 绘制一周中每天每时刻的单车使用量图——折线图(-out)
+# 1. 绘制一周中每天每时刻的单车使用量图——折线图(out)
 z = np.sum(-start_out, axis=(0, 1))
 print(z.min(), z.max())  # 0 15784
 # 1.1 设置axes
@@ -142,7 +142,7 @@ plt.close()
 
 # ----------------------------------------
 
-# 4. 绘制一周中每天总单车使用量——条形图(-out)
+# 4. 绘制一周中每天总单车使用量——条形图(out)
 temp = np.sum(-start_out, axis=(0, 1))
 z = np.zeros((7,), dtype=np.int32)
 for i in range(z.shape[0]):
