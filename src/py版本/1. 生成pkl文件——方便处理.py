@@ -39,6 +39,9 @@
 import pandas as pd
 import numpy as np
 from utils.geohash import decode_exactly
+import os
+os.makedirs("images", exist_ok=True)
+os.makedirs("files", exist_ok=True)
 
 # 1. 文件以starttime升序排序.
 data = pd.read_csv("files/mobike_train_data.csv", dtype={

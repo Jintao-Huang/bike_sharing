@@ -60,7 +60,7 @@ distrib = get_distance_distribute(distance, [1, 2, 5])
 print(distrib.min(), distrib.max())  # 10646 1044945
 
 # 3. 画图
-plt.figure(figsize=(6.5, 5))
+plt.figure(figsize=(6, 4.5))
 explode = [0.08, 0., 0., 0.]
 labels = ["1km 以下", "1-2km", "2-5km", "5km 以上"]
 plt.pie(distrib, explode, labels, pctdistance=0.5, autopct="%.2f%%", labeldistance=None, shadow=True)

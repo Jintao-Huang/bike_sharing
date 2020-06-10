@@ -22,12 +22,12 @@ start_out, end_in = pd.read_pickle("files/start_out.pkl"), pd.read_pickle("files
 # -------------------------------------
 # 1. 空间单车使用活度图(abs(in)+abs(out))
 plt.figure(figsize=(10, 7))
-z = np.sum(np.abs(start_out) + np.abs(end_in), axis=-1)
+z = np.sum(np.abs(start_out), axis=-1)
 # 1.1 axes设置
 plt.xticks(np.arange(116.0, 116.8, 0.05), fontsize=11, rotation=90)  # range(0, 32)
 plt.yticks(np.arange(39.6, 40.2, 0.05), fontsize=11)  # range(0, 32)
 # 1.2 画图
-plt.imshow(z, origin="lower", vmin=0, vmax=500, extent=(left, right, bottom, top))
+plt.imshow(z, origin="lower", vmin=0, vmax=250, extent=(left, right, top, bottom))
 plt.colorbar(shrink=0.9)
 plt.savefig("images/空间使用活度图.png", dpi=500, bbox_inches='tight')
 plt.show()
@@ -36,7 +36,7 @@ plt.close()
 # -------------------------------------
 # 2. 空间单车使用活度图画网格(为调度时使用 32 * 32)
 plt.figure(figsize=(10, 7))
-z = np.sum(np.abs(start_out) + np.abs(end_in), axis=-1)
+z = np.sum(np.abs(start_out), axis=-1)
 # 1.1 axes设置
 
 labels_x = [("     " + str(i)) if i % 2 == 0 else "" for i in range(32)]
@@ -44,18 +44,17 @@ labels_x = [("     " + str(i)) if i % 2 == 0 else "" for i in range(32)]
 labels_y = [("\n" + str(i)) if i % 2 == 0 else "" for i in range(-1, 32)]
 
 plt.xticks(np.linspace(left, right, 33), labels_x, fontsize=11)  # range(0, 32)
-plt.yticks(np.linspace(bottom, top, 33), labels_y, fontsize=11)  # range(0, 32)
+plt.yticks(np.linspace(top, bottom, 33), labels_y, fontsize=11)  # range(0, 32)
 plt.xlim(left, right)
-plt.ylim(bottom, top)
+plt.ylim(top, bottom)
 plt.xlabel("X", fontsize=14)
 plt.ylabel("Y", fontsize=14)
 
 plt.grid()
 
 # 1.2 画图
-plt.imshow(z, origin="lower", vmin=0, vmax=500, extent=(left, right, bottom, top))
+plt.imshow(z, origin="lower", vmin=0, vmax=250, extent=(left, right, top, bottom))
 plt.colorbar(shrink=0.9)
 plt.savefig("images/空间使用活度图_网格.png", dpi=500, bbox_inches='tight')
 plt.show()
 plt.close()
-

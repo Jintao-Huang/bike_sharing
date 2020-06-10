@@ -161,6 +161,7 @@ class Dispatch:
 
 # ------------------------------------- 调度及可视化
 d = Dispatch(height, width, dispatch_thresh, trans_thresh, max_trans, distance_thresh)
+days = ["2017-05-10", "2017-05-11", "2017-05-12", "2017-05-13", "2017-05-14", "2017-05-15", "2017-05-16"]
 for i in range(z.shape[2]):
     if i == 48:
         # 一天后
@@ -179,11 +180,11 @@ for i in range(z.shape[2]):
         if i == 16:
             print("---------------------- 8点调度前")
             d.show(vlim=300, save_fname="images/8点调度前.png")
-            d.dispatch(time="%02d:%02d" % (i // 2, i % 2 * 30))
+            d.dispatch(time="%s %02d:%02d" % (days[i // 48], i // 2, i % 2 * 30))
             print("---------------------- 8点调度后")
             d.show(vlim=300, save_fname="images/8点调度后.png")
         else:
-            d.dispatch(time="%02d:%02d" % (i // 2, i % 2 * 30))
+            d.dispatch(time="%s %02d:%02d" % (days[i // 48],i // 2, i % 2 * 30))
 
 # 不进行调度与调度的区别
 print("---------------------- 调度一周后")
